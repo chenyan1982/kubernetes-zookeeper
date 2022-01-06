@@ -28,13 +28,16 @@ spec:
   selector:
     app: zk
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: zk
 spec:
   serviceName: zk-hs
   replicas: 1
+  selector:
+    matchLabels:
+      app: zk
   podManagementPolicy: Parallel
   updateStrategy:
     type: RollingUpdate
